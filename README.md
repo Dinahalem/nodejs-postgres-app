@@ -2,10 +2,10 @@ This repository contains scripts and Kubernetes manifests for deploying the Node
 
 Prerequisites
 __________________________________________________________________________________________________________________________________________________________________________________________________________________
-. AWS CLI configured with appropriate permissions	
-. Docker installed and configured	
-. kubectl installed and configured to interact with your Kubernetes cluster	
-. Terraform installed	
-. Helm installed	
-. GitHub_CLI installed	
+. AWS CLI configured with appropriate permissions	                                                                                                                                                                     
+. Docker installed and configured	                                                                                                                                                                                     
+. kubectl installed and configured to interact with your Kubernetes cluster	                                                                                                                                           
+. Terraform installed                                                                                                                                                                                                 	
+. Helm installed                                                                                                                                                                                                      	
+. GitHub_CLI installed	                                                                                                                                                                                                     
 . Beekeeper-Studio For Database Access
