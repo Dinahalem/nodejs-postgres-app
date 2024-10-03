@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Set your GitHub repo details
-OWNER="GITHUB_OWNER"
-REPO="REPOSITORY_NAME"
+OWNER="Dinahalem"
+REPO="nodejs-postgres-app"
 
+#make sure the aws credentials in '~/.aws/credentials' directory
 # Set AWS credentials - ideally, these would be read from a secure source or environment variables
-AWS_ACCESS_KEY_ID=$(awk -F "=" '/aws_access_key_id/ {print $2}' ~/.aws/credentials | xargs)
+AWS_ACCESS_KEY_ID=$(awk -F "=" '/aws_access_key_id/ {print $2}' ~/.aws/credentials | xargs)  #xargs uses to handle special character and more commands together
 AWS_SECRET_ACCESS_KEY=$(awk -F "=" '/aws_secret_access_key/ {print $2}' ~/.aws/credentials | xargs)
 
 # Function to create or update GitHub secret
@@ -24,6 +25,7 @@ create_secret() {
     fi
 }
 
+#store secrets in github secret
 # Call the function with each AWS credential
 create_secret "AWS_ACCESS_KEY_ID" "$AWS_ACCESS_KEY_ID"
 create_secret "AWS_SECRET_ACCESS_KEY" "$AWS_SECRET_ACCESS_KEY"

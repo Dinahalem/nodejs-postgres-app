@@ -1,3 +1,4 @@
+#provisioing for grafana, prometheus and alert manager
 variable "kube_monitoring_stack_values" {
   type    = string
   default = <<-EOF
@@ -11,11 +12,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - grafana.YOUR_DOMAIN.com
+          - grafana.mytest.com
         tls:
           - secretName: grafana-tls
             hosts:
-              - grafana.YOUR_DOMAIN.com
+              - grafana.mytest.com
 
     alertmanager:
       enabled: true
@@ -25,11 +26,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - alertmanager.YOUR_DOMAIN.com
+          - alertmanager.mytest.com
         tls:
           - secretName: alertmanager-tls
             hosts:
-              - alertmanager.YOUR_DOMAIN.com
+              - alertmanager.mytest.com
 
     prometheus:
       ingress:
@@ -38,11 +39,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - prometheus.YOUR_DOMAIN.com
+          - prometheus.mytest.com
         tls:
           - secretName: prometheus-tls
             hosts:
-              - prometheus.YOUR_DOMAIN.com
+              - prometheus.mytest.com
       prometheusSpec:
         replicas: 2
         replicaExternalLabelName: prometheus_replica

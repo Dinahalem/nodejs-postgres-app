@@ -1,3 +1,4 @@
+#create ingress to access my app through URL
 variable "nginx_ingress_values" {
   type    = string
   default = <<EOF

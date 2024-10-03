@@ -2,11 +2,11 @@
 
 # Variables
 cluster_name="cluster-1-test"
-region="REGION" #Make sure it is the same in the terraform variables
-aws_id="AWS_ID"
-repo_name="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
+region="eu-central-1" #Make sure it is the same in the terraform variables
+aws_id="707156328412"
+repo_name="nodejs" # name of repo on ECR, If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
 image_name="$aws_id.dkr.ecr.$region.amazonaws.com/$repo_name:latest"
-domain="YOUR_DOMAIN"
+domain="mytest.com"
 dbsecret="db-password-secret"
 namespace="nodejs-app"
 # End Variables
@@ -29,7 +29,7 @@ cd ..
 echo "--------------------Update Kubeconfig--------------------"
 aws eks update-kubeconfig --name $cluster_name --region $region
 
-# remove preious docker images
+# remove previous docker images
 echo "--------------------Remove Previous build--------------------"
 docker rmi -f $image_name || true
 
@@ -41,6 +41,7 @@ docker build -t $image_name .
 echo "--------------------Login to ECR--------------------"
 aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_id.dkr.ecr.eu-central-1.amazonaws.com
 
+# push image on ECR
 # push the latest build to dockerhub
 echo "--------------------Pushing Docker Image--------------------"
 docker push $image_name
