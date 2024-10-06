@@ -11,4 +11,9 @@ ________________________________________________________________________________
 . Beekeeper-Studio For Database Access                                                                                                                               
 ___________________________________________________________________________________________________________________________________________________________________
 chmod +x build.sh                                                                                                                                                                                                                                                                                                                         
-./build.sh   #run for the script that contains some variables
+./build.sh             #run for the script that contains some variables that you need to customize according to your AWS environment and deployment requirements.
+
+./github_secrets.sh    #Use the GitHub CLI to add your AWS credentials (secret key & secret access key) to GitHub Secrets, but ensure you have the GitHub CLI (gh) installed and authenticated.
+
+cat ~/.kube/config | base64  # to access kubernetes cluster, add kubconfig ti githubsecrets. Copy the encoded output to your clipboard, Paste the base64-encoded KUBECONFIG data into the secret's value field in github repository.
+
